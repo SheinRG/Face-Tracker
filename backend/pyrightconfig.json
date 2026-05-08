@@ -1,0 +1,9 @@
+{
+  "reportMissingModuleSource": false,
+  "reportMissingImports": "warning",
+  "pythonVersion": "3.14",
+  "venvPath": "",
+  "extraPaths": [],
+  "typeCheckingMode": "basic",
+  "reportMissingTypeStubs": false
+}
