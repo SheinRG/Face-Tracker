@@ -67,11 +67,9 @@ export function useVideoStream() {
       captureCanvas.height = CAPTURE_HEIGHT;
       captureCanvasRef.current = captureCanvas;
 
-      // WebSocket connection
+      // WebSocket connection — use /ws/ prefix so nginx (Docker) or Vite can proxy
       const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const host = window.location.hostname;
-      const port = "8000";
-      const wsUrl = `${protocol}//${host}:${port}/video/ws/${sessionId}`;
+      const wsUrl = `${protocol}//${window.location.host}/ws/video/ws/${sessionId}`;
 
       const ws = new WebSocket(wsUrl);
       ws.binaryType = "blob";

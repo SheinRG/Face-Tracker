@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+*.pyo
+venv
+.env
+.git
+.gitignore
+*.db
+*.log
+*.err
+README.md
+pyrightconfig.json

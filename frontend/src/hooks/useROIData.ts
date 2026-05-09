@@ -8,9 +8,7 @@ async function fetchROIData(
   sessionId: string,
   limit: number
 ): Promise<ROIListResponse> {
-  const host = window.location.hostname;
-  const port = "8000";
-  const url = `http://${host}:${port}/roi/?session_id=${sessionId}&limit=${limit}`;
+  const url = `/api/roi/?session_id=${sessionId}&limit=${limit}`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -19,14 +17,14 @@ async function fetchROIData(
   return response.json() as Promise<ROIListResponse>;
 }
 
-export function useROIData(limit = 20) {
+export function useROIData(limit = 50) {
   const sessionId = useAppStore((s) => s.sessionId);
   const connectionStatus = useAppStore((s) => s.connectionStatus);
 
   return useQuery<ROIListResponse>({
     queryKey: ["roi", sessionId, limit],
     queryFn: () => fetchROIData(sessionId, limit),
-    refetchInterval: 2000,
+    refetchInterval: 500,
     enabled: connectionStatus === "connected",
   });
 }

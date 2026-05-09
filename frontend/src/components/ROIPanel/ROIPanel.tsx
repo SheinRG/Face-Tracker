@@ -7,7 +7,7 @@ import { ROICard } from "./ROICard";
 import { useEffect, useRef } from "react";
 
 export function ROIPanel() {
-  const { data, isLoading } = useROIData(20);
+  const { data, isLoading } = useROIData(50);
   const connectionStatus = useAppStore((s) => s.connectionStatus);
   const setLastROI = useAppStore((s) => s.setLastROI);
   const setFacesDetected = useAppStore((s) => s.setTotalFacesDetected);
