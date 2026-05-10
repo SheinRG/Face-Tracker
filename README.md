@@ -163,6 +163,4 @@ face-detection-system/
 ---
 
 
-## 📜 License
 
-MIT
