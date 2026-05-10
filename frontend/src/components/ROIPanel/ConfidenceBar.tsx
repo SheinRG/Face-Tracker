@@ -1,4 +1,3 @@
-/** Animated confidence meter bar with color transitions. */
 
 import { motion } from "framer-motion";
 
@@ -7,9 +6,9 @@ interface ConfidenceBarProps {
 }
 
 function getBarColor(confidence: number): string {
-  if (confidence < 0.6) return "#ef4444"; // danger red
-  if (confidence < 0.8) return "#f59e0b"; // warning amber
-  return "#22c55e"; // accent green
+  if (confidence < 0.6) return "#ef4444"; 
+  if (confidence < 0.8) return "#f59e0b"; 
+  return "#22c55e"; 
 }
 
 export function ConfidenceBar({ confidence }: ConfidenceBarProps) {

@@ -1,4 +1,3 @@
-/** Zustand global state store for session, connection, and stats. */
 
 import { create } from "zustand";
 import type { ConnectionStatus, ROI } from "../types";

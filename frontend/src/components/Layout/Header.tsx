@@ -1,4 +1,3 @@
-/** Header component — slides down on mount with Framer Motion. */
 
 import { motion } from "framer-motion";
 import { useAppStore } from "../../store/useAppStore";

@@ -1,9 +1,8 @@
-/** Custom hook: WebSocket video streaming with capture canvas and FPS tracking. */
 
 import { useCallback, useEffect, useRef } from "react";
 import { useAppStore } from "../store/useAppStore";
 
-const FRAME_INTERVAL_MS = 66; // ~15 fps
+const FRAME_INTERVAL_MS = 66; 
 const CAPTURE_WIDTH = 640;
 const CAPTURE_HEIGHT = 480;
 
@@ -47,13 +46,11 @@ export function useVideoStream() {
     try {
       setConnectionStatus("connecting");
 
-      // Acquire webcam
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { width: CAPTURE_WIDTH, height: CAPTURE_HEIGHT },
       });
       mediaStreamRef.current = stream;
 
-      // Hidden video element to render the webcam
       const video = document.createElement("video");
       video.srcObject = stream;
       video.muted = true;
@@ -61,13 +58,11 @@ export function useVideoStream() {
       await video.play();
       videoRef.current = video;
 
-      // Off-screen canvas for frame capture
       const captureCanvas = document.createElement("canvas");
       captureCanvas.width = CAPTURE_WIDTH;
       captureCanvas.height = CAPTURE_HEIGHT;
       captureCanvasRef.current = captureCanvas;
 
-      // WebSocket connection — use /ws/ prefix so nginx (Docker) or Vite can proxy
       const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
       const wsUrl = `${protocol}//${window.location.host}/ws/video/ws/${sessionId}`;
 
@@ -78,7 +73,6 @@ export function useVideoStream() {
       ws.onopen = () => {
         setConnectionStatus("connected");
 
-        // Capture and send frames at interval
         intervalRef.current = setInterval(() => {
           if (!videoRef.current || !captureCanvasRef.current || !wsRef.current) return;
           if (wsRef.current.readyState !== WebSocket.OPEN) return;
@@ -99,7 +93,6 @@ export function useVideoStream() {
           );
         }, FRAME_INTERVAL_MS);
 
-        // FPS counter — update every second
         frameCountRef.current = 0;
         fpsIntervalRef.current = setInterval(() => {
           setFps(frameCountRef.current);
@@ -145,7 +138,6 @@ export function useVideoStream() {
     }
   }, [sessionId, setConnectionStatus, setFps, incrementFrames]);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       stopStream();

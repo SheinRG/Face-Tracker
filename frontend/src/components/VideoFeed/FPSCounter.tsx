@@ -1,4 +1,3 @@
-/** FPS counter with digit-flip animation via AnimatePresence. */
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppStore } from "../../store/useAppStore";

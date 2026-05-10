@@ -1,4 +1,3 @@
-/** Shared TypeScript interfaces used across the frontend. */
 
 export interface ROI {
   id: number;

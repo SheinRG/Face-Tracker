@@ -1,9 +1,4 @@
-"""Create roi_records table.
 
-Revision ID: 0001
-Revises: None
-Create Date: 2024-06-01 00:00:00.000000
-"""
 from typing import Sequence, Union
 
 from alembic import op
@@ -13,7 +8,6 @@ revision: str = "0001"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
-
 
 def upgrade() -> None:
     op.create_table(
@@ -42,7 +36,6 @@ def upgrade() -> None:
         ["session_id"],
         unique=False,
     )
-
 
 def downgrade() -> None:
     op.drop_index(op.f("ix_roi_records_session_id"), table_name="roi_records")

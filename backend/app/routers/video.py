@@ -1,4 +1,3 @@
-"""Video streaming router — WebSocket ingest and MJPEG output."""
 
 import asyncio
 import logging
@@ -15,16 +14,13 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/video", tags=["video"])
 
-# In-memory store of the latest annotated frame per session
 _latest_frames: Dict[str, bytes] = {}
 
-# Per-session frame counters
 _frame_counters: Dict[str, int] = {}
-
 
 @router.websocket("/ws/{session_id}")
 async def video_websocket(websocket: WebSocket, session_id: str) -> None:
-    """Accept webcam frames via WebSocket, detect faces, return annotated frames."""
+    
     await websocket.accept()
     _frame_counters[session_id] = 0
     logger.info("WebSocket connected: session=%s", session_id)
@@ -73,9 +69,8 @@ async def video_websocket(websocket: WebSocket, session_id: str) -> None:
         _latest_frames.pop(session_id, None)
         _frame_counters.pop(session_id, None)
 
-
 async def _mjpeg_generator(session_id: str):
-    """Yield MJPEG frames for the given session at ~15 fps."""
+    
     while True:
         frame = _latest_frames.get(session_id)
         if frame is not None:
@@ -85,10 +80,9 @@ async def _mjpeg_generator(session_id: str):
             )
         await asyncio.sleep(0.066)
 
-
 @router.get("/stream/{session_id}")
 async def video_stream(session_id: str) -> StreamingResponse:
-    """Serve the latest annotated frame for a session as an MJPEG stream."""
+    
     return StreamingResponse(
         _mjpeg_generator(session_id),
         media_type="multipart/x-mixed-replace; boundary=frame",

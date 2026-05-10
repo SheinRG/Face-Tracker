@@ -1,4 +1,3 @@
-"""ORM model package."""
 
 from app.models.roi import ROIRecord
 

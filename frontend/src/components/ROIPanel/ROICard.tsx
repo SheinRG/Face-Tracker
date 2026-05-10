@@ -1,4 +1,3 @@
-/** Individual ROI detection record card with enter/exit animations. */
 
 import { motion } from "framer-motion";
 import type { ROI } from "../../types";

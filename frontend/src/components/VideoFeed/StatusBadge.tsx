@@ -1,4 +1,3 @@
-/** Animated connection status indicator — pulsing dot with label. */
 
 import { motion } from "framer-motion";
 import type { ConnectionStatus } from "../../types";

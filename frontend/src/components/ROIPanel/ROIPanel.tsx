@@ -1,4 +1,3 @@
-/** Live ROI data panel with scrollable list and animated card entries. */
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useROIData } from "../../hooks/useROIData";
@@ -16,7 +15,6 @@ export function ROIPanel() {
   const total = data?.total ?? 0;
   const prevTotalRef = useRef(0);
 
-  // Update last ROI and face count in store — use ref to avoid infinite loop
   useEffect(() => {
     if (items.length > 0) {
       setLastROI(items[0]);
@@ -32,7 +30,7 @@ export function ROIPanel() {
 
   return (
     <div className="flex flex-col w-full max-w-sm">
-      {/* Header */}
+      {}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-sm font-semibold text-text-primary uppercase tracking-wider">
           ROI Stream
@@ -51,7 +49,7 @@ export function ROIPanel() {
         </AnimatePresence>
       </div>
 
-      {/* Scrollable list */}
+      {}
       <div className="flex flex-col gap-2 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
         {connectionStatus !== "connected" && items.length === 0 && (
           <div className="flex flex-col items-center justify-center gap-3 py-12 text-text-secondary">

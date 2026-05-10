@@ -29,7 +29,6 @@ services:
       db:
         condition: service_healthy
     environment:
-      # Clear DATABASE_URL so it uses PostgreSQL (not SQLite)
       DATABASE_URL: ""
       POSTGRES_USER: ${POSTGRES_USER:-facedetect}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-facedetect}

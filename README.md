@@ -162,17 +162,6 @@ face-detection-system/
 
 ---
 
-## 🤖 AI Usage Attestation
-
-This project was scaffolded with the assistance of an AI coding assistant (Antigravity / Claude). Specifically:
-
-- **AI-generated**: Initial file structure, boilerplate FastAPI/React scaffolding, Alembic migration template, Docker Compose configuration, architecture SVG, and this README.
-- **AI-assisted**: MediaPipe + Pillow integration logic, WebSocket frame streaming pipeline, Framer Motion animation specifications, Zustand store design, and React Query polling hook.
-- **Human-directed**: All architectural decisions (tech stack selection, schema design rationale, animation specs), code review, testing, and final adjustments were driven by the developer.
-
-All code was reviewed and validated by the developer before submission.
-
----
 
 ## 📜 License
 

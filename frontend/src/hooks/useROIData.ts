@@ -1,4 +1,3 @@
-/** Custom hook: polls ROI data from the backend using React Query. */
 
 import { useQuery } from "@tanstack/react-query";
 import { useAppStore } from "../store/useAppStore";

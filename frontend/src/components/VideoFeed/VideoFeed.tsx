@@ -1,4 +1,3 @@
-/** Main video feed component — canvas, overlays, stats, and start/stop controls. */
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useVideoStream } from "../../hooks/useVideoStream";
@@ -19,7 +18,7 @@ export function VideoFeed() {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Canvas wrapper with spring animation */}
+      {}
       <motion.div
         initial={{ scale: 0.96, opacity: 0 }}
         animate={
@@ -30,7 +29,7 @@ export function VideoFeed() {
         transition={{ type: "spring", stiffness: 200, damping: 25 }}
         className="relative w-full max-w-[640px] aspect-[4/3] rounded-2xl overflow-hidden bg-surface-elevated border border-border"
       >
-        {/* Canvas */}
+        {}
         <canvas
           ref={canvasRef}
           className="w-full h-full object-contain bg-black"
@@ -38,7 +37,7 @@ export function VideoFeed() {
           height={480}
         />
 
-        {/* Overlay badges */}
+        {}
         <div className="absolute top-3 left-3">
           <StatusBadge status={connectionStatus} />
         </div>
@@ -51,7 +50,7 @@ export function VideoFeed() {
           </span>
         </div>
 
-        {/* Idle state — start camera button */}
+        {}
         <AnimatePresence>
           {connectionStatus === "idle" && (
             <motion.div
@@ -86,7 +85,7 @@ export function VideoFeed() {
           )}
         </AnimatePresence>
 
-        {/* Disconnected overlay */}
+        {}
         <AnimatePresence>
           {connectionStatus === "disconnected" && (
             <motion.div
@@ -118,7 +117,7 @@ export function VideoFeed() {
           )}
         </AnimatePresence>
 
-        {/* Error overlay */}
+        {}
         <AnimatePresence>
           {connectionStatus === "error" && (
             <motion.div
@@ -139,7 +138,7 @@ export function VideoFeed() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Controls */}
+      {}
       {isStreaming && (
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -155,7 +154,7 @@ export function VideoFeed() {
         </motion.div>
       )}
 
-      {/* Mini stats row */}
+      {}
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-elevated border border-border text-xs">
           <span className="text-text-secondary">Frames</span>

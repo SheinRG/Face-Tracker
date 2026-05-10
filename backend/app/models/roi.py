@@ -1,4 +1,3 @@
-"""SQLAlchemy ORM model for face ROI detection records."""
 
 from datetime import datetime
 
@@ -7,10 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
 
-
 class ROIRecord(Base):
-    """Stores per-frame face Region-Of-Interest data detected by MediaPipe."""
-
+    
     __tablename__ = "roi_records"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)

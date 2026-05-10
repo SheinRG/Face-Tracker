@@ -1,4 +1,3 @@
-/** Application entry point — mounts React root in strict mode. */
 
 import React from "react";
 import ReactDOM from "react-dom/client";

@@ -1,4 +1,3 @@
-"""FastAPI application entry point with lifespan, CORS, and router mounts."""
 
 import logging
 from contextlib import asynccontextmanager
@@ -17,10 +16,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Create DB tables on startup, dispose engine on shutdown."""
+    
     logger.info("Creating database tables...")
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -29,7 +27,6 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
     logger.info("Database engine disposed.")
 
-
 app = FastAPI(
     title=settings.APP_TITLE,
     version=settings.APP_VERSION,
@@ -37,7 +34,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — allow all origins so recruiters can test locally
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -47,14 +43,12 @@ app.add_middleware(
     expose_headers=["X-Total-Count"],
 )
 
-# Mount routers
 app.include_router(video.router)
 app.include_router(roi.router)
 
-
 @app.get("/health", tags=["health"])
 async def health_check() -> dict:
-    """Verify API is running and database is reachable."""
+    
     try:
         async with engine.connect() as conn:
             await conn.execute(text("SELECT 1"))

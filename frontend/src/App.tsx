@@ -1,4 +1,3 @@
-/** Root application component — layout, motion wrappers, and responsive grid. */
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -30,7 +29,7 @@ export default function App() {
       >
         <Header />
 
-        {/* Mobile sidebar toggle */}
+        {}
         <button
           className="md:hidden fixed bottom-4 left-4 z-30 flex items-center justify-center w-12 h-12 rounded-full bg-surface-elevated border border-border shadow-lg text-text-primary"
           onClick={() => setSidebarOpen(true)}

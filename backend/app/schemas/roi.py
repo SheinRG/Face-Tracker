@@ -1,13 +1,10 @@
-"""Pydantic v2 schemas for ROI data serialisation."""
 
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict
 
-
 class ROIResponse(BaseModel):
-    """Single ROI detection record returned by the API."""
-
+    
     model_config = ConfigDict(from_attributes=True)
 
     id: int
@@ -22,9 +19,7 @@ class ROIResponse(BaseModel):
     img_height: int
     created_at: datetime
 
-
 class ROIListResponse(BaseModel):
-    """Paginated list of ROI records."""
-
+    
     items: list[ROIResponse]
     total: int

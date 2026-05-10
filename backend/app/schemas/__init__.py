@@ -1,4 +1,3 @@
-"""Pydantic schemas package."""
 
 from app.schemas.roi import ROIListResponse, ROIResponse
 

@@ -1,4 +1,3 @@
-/** Sidebar — stats cards, connection info, architecture button. */
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
@@ -46,7 +45,7 @@ function CopyButton({ text }: { text: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard not available */
+      
     }
   };
 
@@ -94,7 +93,7 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
         </button>
       </div>
 
-      {/* Session ID */}
+      {}
       <div className="p-4 rounded-xl bg-surface-elevated border border-border">
         <p className="mb-1 text-xs font-medium text-text-secondary uppercase tracking-wider">
           Session ID
@@ -111,7 +110,7 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
       <StatCard label="Faces Detected" value={totalFacesDetected.toLocaleString()} />
       <StatCard label="Last Confidence" value={avgConfidence} />
 
-      {/* Connection info */}
+      {}
       <div className="p-4 rounded-xl bg-surface-elevated border border-border">
         <p className="mb-2 text-xs font-medium text-text-secondary uppercase tracking-wider">
           Connection
@@ -120,7 +119,7 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
           <div className="flex justify-between">
             <span>WebSocket</span>
             <span className="text-text-primary truncate ml-2">
-              ws://{host}:8000
+              ws:
             </span>
           </div>
           <div className="flex justify-between">
@@ -140,7 +139,7 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
         </div>
       </div>
 
-      {/* Architecture button */}
+      {}
       <button
         onClick={() => setShowArch(true)}
         className="mt-auto flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-accent bg-accent/10 border border-accent/20 hover:bg-accent/20 transition-colors"
@@ -154,7 +153,7 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
         Architecture
       </button>
 
-      {/* Architecture Modal */}
+      {}
       <AnimatePresence>
         {showArch && (
           <motion.div
@@ -197,12 +196,12 @@ export function Sidebar({ isMobileOpen, onClose }: SidebarProps) {
 
   return (
     <>
-      {/* Desktop sidebar */}
+      {}
       <aside className="hidden md:block w-[280px] min-h-0 border-r border-border bg-surface overflow-y-auto">
         {sidebarContent}
       </aside>
 
-      {/* Mobile drawer */}
+      {}
       <AnimatePresence>
         {isMobileOpen && (
           <>
