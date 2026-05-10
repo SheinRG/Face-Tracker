@@ -4,7 +4,7 @@ A containerised full-stack application that captures webcam video, detects faces
 
 ---
 
-## ⚡ Quickstart
+##  Quickstart
 
 ```bash
 git clone <repo-url> face-detection-system
@@ -25,7 +25,7 @@ Open **http://localhost:3000** in a browser with a webcam. Click **"Start Camera
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system is a three-tier architecture running inside a Docker Compose network. The **React frontend** (served by nginx on port 3000) captures webcam frames via the browser's `getUserMedia` API, sends them as binary blobs over a **WebSocket** connection to the **FastAPI backend** (port 8000). The backend decodes each JPEG frame, runs MediaPipe face detection on the RGB pixel array, draws a bounding box using Pillow's `ImageDraw`, and sends the annotated frame back through the same WebSocket. Simultaneously, every detected ROI (bounding box + confidence) is persisted to **PostgreSQL** (port 5432) via async SQLAlchemy with the `asyncpg` driver.
 
@@ -46,7 +46,7 @@ The frontend also polls a REST endpoint (`GET /roi/`) every 2 seconds using TanS
 
 ---
 
-## 🗄️ Database Schema
+##  Database Schema
 
 ```sql
 CREATE TABLE roi_records (
@@ -75,7 +75,7 @@ CREATE INDEX ix_roi_records_session_id ON roi_records (session_id);
 
 ---
 
-## 🧠 Key Design Decisions
+##  Key Design Decisions
 
 ### Why PostgreSQL over Redis / SQLite?
 
@@ -95,7 +95,7 @@ FastAPI's native async support means the WebSocket handler, DB writes, and REST 
 
 ---
 
-## 🎨 Frontend Stack Decisions
+##  Frontend Stack Decisions
 
 - **Framer Motion v11** — powers all 10 mandatory animations (page load, card entries, digit flips, confidence bars, etc.) with spring physics for a premium feel.
 - **Zustand** — single-file global store for session ID, connection status, FPS, and stats — far lighter than Redux for this scope.
@@ -103,7 +103,7 @@ FastAPI's native async support means the WebSocket handler, DB writes, and REST 
 
 ---
 
-## 🛠️ Development Mode (without Docker)
+## Development Mode (without Docker)
 
 ### Backend
 
@@ -129,7 +129,7 @@ npm run dev
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 face-detection-system/
